@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Dress Up</title>
+    <style>
+        /* Reseta margens e define o fundo escuro para centralizar o jogo */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estiliza o container onde o Ruffle vai rodar o SWF */
+        #ruffle-container {
+            width: 100%;
+            height: 100%;
+            max-width: 800px;
+            max-height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Garante que o player do Ruffle ocupe todo o espaço disponível no container */
+        #ruffle-container object {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container do Jogo -->
+    <div id="ruffle-container"></div>
+
+    <!-- Script Oficial do Ruffle para emulação de Flash -->
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.RufflePlayer.config = {
+            "publicPath": "https://unpkg.com/@ruffle-rs/ruffle/",
+            "autoplay": "auto",
+            "unmuteOverlay": "visible",
+            "backgroundColor": "#1a1a1a",
+            "letterbox": "fullscreen"
+        };
+
+        window.addEventListener("DOMContentLoaded", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            const container = document.getElementById("ruffle-container");
+            
+            container.appendChild(player);
+            
+            // Carrega o arquivo SWF (altere o nome aqui se o arquivo estiver em outra pasta)
+            player.load("character_dress_up_by_akaimegane_d9d7v97.swf");
+        });
+    </script>
+
+</body>
+</html>
